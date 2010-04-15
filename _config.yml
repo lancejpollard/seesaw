@@ -18,13 +18,16 @@ remote_app:
   path: /test
 
 keys:
-  google_analytics: "UA-15601175-2"
+  google_analytics: "UA-15601175-7"
 info:
   address:
     city: Berkeley
     state: CA
     zip: 94704
   email: "lancejpollard@gmail.com"
+  website: http://ilove4d.com
+  company: 4D
+  
 metadata:
   domain: ilove4d.com
   title: SeeSaw
@@ -34,7 +37,7 @@ metadata:
   copyright: "4D | All Rights Reserved"
   country: "United States"
   classification: Techonology and Innovation
-  keywords: "AI, AIR, Algorithm, Animation, AS3, Autonomous, Bioinformatics, Biology, Code, Complexity, Emergence, Events, Experiments,Flash, Flash Player 10, Flex, Git, Github, Interactive, Interface, Open Source"
+  keywords: "Parsing, Ruby, Sinatra, HAML, Textile, Mardown, HTML, JQuery, iLove4D"
 authors:
   -
     name: Lance Pollard

@@ -4,6 +4,7 @@ $(document).ready(function() {
 	$rightbox = $("#right");
 	$angle = 5;
 	$radius = 180;
+	$start = $leftbox.position().top;
 	offset = 40;
 	$chord = chordlength($radius, $angle);
 	$high = $chord + offset;
@@ -17,7 +18,7 @@ $(document).ready(function() {
 		saw();
 	});
 	$(document).keydown(function (event) {
-		if ($(event.target).hasClass("weight"))
+		if ($(event.target).hasClass("text"))
 			return;
 		switch (event.keyCode) {
 			case 37: // left
@@ -27,7 +28,7 @@ $(document).ready(function() {
 				break;	
 			case 39:
 				see();
-				break;	
+				break;
 			case 40:
 				break;
 		}
@@ -53,9 +54,22 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".control a").click(function() {
+	$("#left_controls a").click(function() {
+		$input_select.val($(this).attr("title"));
+		see();
 		return false;
-	})
+	});
+	$("#right_controls a").click(function() {
+		$output_select.val($(this).attr("title"));
+		see();
+		return false;
+	});
+	
+	$("#seesaw_post").click(function() {
+		$seesaw.saw(0);
+		$leftbox.stop().animate({top:$start});
+		$rightbox.stop().animate({top:$start});
+	});
 });
 
 function see() {
@@ -73,8 +87,6 @@ function saw() {
 }
 
 function convert() {
-	$input_select.val("textile");
-	$output_select.val("html");
 	$input.val($input_text.val());
 	$converter.submit();
 }

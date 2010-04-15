@@ -1,1 +1,4 @@
-ruby-openid "v >= 2.1.7"
+broadway
+RedCloth
+BlueCloth
+ClothRed
