@@ -69,8 +69,59 @@ $(document).ready(function() {
 		$seesaw.saw(0);
 		$leftbox.stop().animate({top:$start});
 		$rightbox.stop().animate({top:$start});
+		$input_text.stop().animate({opacity:0}, 300, function() {
+			$input_text.val("");
+			$input_text.css("opacity", 1);
+		});
+		$output_text.stop().animate({opacity:0}, 300, function() {
+			$output_text.val("");
+			$output_text.css("opacity", 1);
+		});		
 	});
+	
+	$("#header h1").click(function() {
+		intro();
+	})
 });
+
+var intro_played = false;
+function intro() {
+	if (intro_played)
+		return;
+	
+	intro_played = true;
+	var intro = "h1. Welcome to SeeSaw\n\nSee...";
+	animateText(intro, $input_text, 50, function() {
+		$("#right textarea").focus();
+		var timeout = setTimeout(function() {
+			$("#left textarea").focus();
+			clearTimeout(timeout);
+			timeout = setTimeout(function() {
+				clearTimeout(timeout);
+				intro = "Saw.\n\n\"Fork Me\":http://github.com/viatropos";
+				animateText(intro, $input_text, 50, function() {
+					$("#right textarea").focus();
+				});
+			}, 1000);
+		}, 1500);
+	})
+}
+
+function animateText(string, receiver, interval, callback) {
+	var array = string.split("");
+	var built = "";
+	var i = 0;
+	var reference = setInterval(function() {
+		built += array[i];
+		i++;
+		if (i >= array.length) {
+			clearInterval(reference);
+			if (callback != null)
+				callback();
+		}
+		receiver.val(built);
+	}, interval)
+}
 
 function see() {
 	$seesaw.see(5);
