@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	// tooltips
-	$("a, h1").easyTooltip();
+	$("a.tooltip, h1.tooltip").easyTooltip();
 	$(".close").click(function() { $("#ie_warning").hide(300); return false; })
 	$seesaw = $('#seesaw');
 	$leftbox = $("#left");

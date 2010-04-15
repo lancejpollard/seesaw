@@ -1,7 +1,7 @@
 #main_container
 	#background
 	#header
-		%h1{:title => "SeeSaw?"}
+		%h1.tooltip{:title => "SeeSaw?"}
 			%a= c("metadata.title")
 		%h2= c("metadata.description")
 	%form#converter.invisible{:action => "/see", :method => :post}
@@ -26,13 +26,13 @@
 			#left_controls.controls
 				%ul
 					%li.control
-						%a{:href => "", :title => "Html", :rel => "html"} Ht
+						%a.tooltip{:href => "", :title => "Html", :rel => "html"} Ht
 					%li.control
-						%a{:href => "", :title => "Textile", :rel => "textile"} Tx
+						%a.tooltip{:href => "", :title => "Textile", :rel => "textile"} Tx
 					%li.control
-						%a{:href => "", :title => "Haml", :rel => "haml"} Ha
+						%a.tooltip{:href => "", :title => "Haml", :rel => "haml"} Ha
 					%li.control
-						%a{:href => "", :title => "Markdown", :rel => "markdown"} Md
+						%a.tooltip{:href => "", :title => "Markdown", :rel => "markdown"} Md
 			.text_container
 				%textarea.text#input_text
 		#right.weight
@@ -51,9 +51,9 @@
 	#footer
 		%ul
 			%li.control
-				%a.lesson{:href => "", :title => "Textile Example", :rel => "textile"} Tx
+				%a.tooltip.lesson{:href => "", :title => "Textile Example", :rel => "textile"} Tx
 			%li.control
-				%a.lesson{:href => "", :title => "Markdown Example", :rel => "markdown"} Md
+				%a.tooltip.lesson{:href => "", :title => "Markdown Example", :rel => "markdown"} Md
 		%a.name{:href => c("links.website")} Viatropos @ 4D
 	/[if IE]
 		#ie_warning

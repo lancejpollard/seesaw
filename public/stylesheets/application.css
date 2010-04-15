@@ -58,7 +58,7 @@ h3 {
 	min-height:630px;
 }
 
-#main_container div {
+div {
   -moz-border-radius: 14px;
   -webkit-border-radius: 14px;
 }
@@ -178,6 +178,7 @@ textarea {
 	left:5px;
 }
 #header {
+	position:relative;
 	width:100%;
 	text-align:center;
 	margin-top:30px;
