@@ -14,13 +14,12 @@
 
 / stylesheets
 %link{:href => "/stylesheets/application.css", :rel => "stylesheet", :type => "text/css"}/
-/[if lt IE 8]
-	%link{:href => "/stylesheets/ie.css", :rel => "stylesheet", :media => "screen", :type => "text/css"}/
 = yield_content :stylesheet_head
 
 / javascripts
 / %script{ :type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" }
 %script{ :type => "text/javascript", :src => "/javascripts/jquery.js" }
+%script{ :type => "text/javascript", :src => "/javascripts/jquery.easytooltip.js" }
 %script{ :type => "text/javascript", :src => "/javascripts/jquery.transform.js" }
 %script{ :type => "text/javascript", :src => "/javascripts/jquery.animate-transform.js" }
 %script{ :type => "text/javascript", :src => "/javascripts/jquery.seesaw.js" }
@@ -31,10 +30,6 @@
 / local business card: http://microformats.org/code/hcard/creator
 %link{:rel => :profile, :href => "http://microformats.org/profile/hcard"}
 / icons
-/ backup/basic icon, must be .ico for IE
 %link{:rel => "shortcut icon", :href => "#{c("icons.favicon")}", :type => "image/x-icon"}
-%link{:rel => "fluid-icon", :href => "#{c("metadata.fluid_icon")}", :title => "#{c("metadata.title")}"}
-/ 57x57, 320x460
-%link{:rel => "apple-touch-icon", :href => "#{c("metadata.touch_icon")}", :title => "#{c("metadata.title")}"}/
-%link{:rel => "apple-touch-startup-image", :href => "#{c("metadata.touch_startup_image")}", :title => "#{c("metadata.title")}"}/
+%link{:rel => "apple-touch-icon", :href => "#{c("icons.touch_icon")}", :title => "#{c("metadata.title")}"}/
 = yield_content :extra_head

@@ -10,7 +10,7 @@ info:
   zip: 94704
 snippets:
   copyright: "Copyright 2010 \"4D Design Lab\":http://ilove4d.com."
-  
+  ie_warning: "Internet Explorer is far behind todays standards.\nTo Play, \"get a better browser\":http://www.google.com/chrome.\n\"(close)Click to Continue\":/got-my-browser"
 
 labels:
   name: Name

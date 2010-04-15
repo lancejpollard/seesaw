@@ -32,7 +32,7 @@ metadata:
   domain: ilove4d.com
   title: SeeSaw
   tagline: "Format Tester - Convert Back and Forth Between all the Common Formats"
-  description: "Converting Back n Forth n Back n Forth..."
+  description: "Converting Text Back and Forth"
   author: "Lance Pollard"
   copyright: "4D | All Rights Reserved"
   country: "United States"
@@ -58,3 +58,6 @@ links:
   linked_in: ""
   website: "http://www.ilove4d.com"
   google_apps: "http://www.google.com/a/ilove4d.com"
+icons:
+  favicon: /images/favicon.ico
+  touch_icon: /images/touch-icon.jpg

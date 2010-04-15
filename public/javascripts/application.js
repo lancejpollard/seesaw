@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	// tooltips
+	$("a, h1").easyTooltip();
+	$(".close").click(function() { $("#ie_warning").hide(300); return false; })
 	$seesaw = $('#seesaw');
 	$leftbox = $("#left");
 	$rightbox = $("#right");
@@ -72,19 +75,19 @@ $(document).ready(function() {
 	});
 	
 	$("#left_controls a").click(function() {
-		$input_select.val($(this).attr("title"));
+		$input_select.val($(this).attr("rel"));
 		invalidateParsing();
 		see();
 		return false;
 	});
 	$("#right_controls a").click(function() {
-		$output_select.val($(this).attr("title"));
+		$output_select.val($(this).attr("rel"));
 		invalidateParsing();
 		see();
 		return false;
 	});
 	$("a.lesson").click(function() {
-		url = "/lessons/" + $(this).attr("title");
+		url = "/lessons/" + $(this).attr("rel");
 		$.ajax({
 			url: url,
 			success: function(data) {
@@ -132,7 +135,7 @@ function intro() {
 			clearTimeout(timeout);
 			timeout = setTimeout(function() {
 				clearTimeout(timeout);
-				intro = "Saw.\n\n\"Text Converting\":http://en.wikipedia.org/wiki/Parsing";
+				intro = "It's easy to convert.\n\nClick around!";
 				animateText(intro, $input_text, 50, function() {
 					invalidateParsing();
 					$output_text.focus();
