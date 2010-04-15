@@ -3,7 +3,11 @@
 require 'rubygems'
 require 'haml'
 require "RedCloth"
-require "BlueCloth"
+begin
+  require "BlueCloth"
+rescue Exception => e
+  puts "Heroku can't load bluecloth properly"
+end
 require "ClothRed"
 require 'haml/exec'
 require 'haml/html'
