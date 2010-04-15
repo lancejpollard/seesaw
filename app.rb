@@ -5,10 +5,10 @@ require 'haml'
 require "RedCloth"
 begin
   require "BlueCloth"
+  require "ClothRed"
 rescue Exception => e
   puts "Heroku can't load bluecloth properly"
 end
-require "ClothRed"
 require 'haml/exec'
 require 'haml/html'
 require 'sinatra'
