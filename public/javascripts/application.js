@@ -9,17 +9,26 @@ $(document).ready(function() {
 	$chord = chordlength($radius, $angle);
 	$high = $chord + offset;
 	$low = - $high + offset;
-	$('#seesaw').toggle(function() { see(); }, function() { saw(); });
+	$ready_to_render = false;
 	
-	$("#right textarea").focus(function() {
-		see();
-	});
-	$("#left textarea").focus(function() {
-		saw();
-	});
+	$converter = $("#converter");
+	$input = $("#converter textarea");
+	$input_select = $("#input_format");
+	$output_select = $("#output_format");
+	$input_text = $("#input_text");
+	$output_text = $("#output_text");
+	
+	$seesaw.toggle(function() { see(); }, function() { saw(); });
+	
+	// validate on focus
+	$output_text.focus(function() { see(); });
+	$input_text.focus(function() { saw(); });
+	
 	$(document).keydown(function (event) {
-		if ($(event.target).hasClass("text"))
+		if ($(event.target).hasClass("text")) {
+			invalidateParsing();
 			return;
+		}
 		switch (event.keyCode) {
 			case 37: // left
 				saw();
@@ -33,13 +42,6 @@ $(document).ready(function() {
 				break;
 		}
 	});
-	
-	$converter = $("#converter");
-	$input = $("#converter textarea");
-	$input_select = $("#input_format");
-	$output_select = $("#output_format");
-	$input_text = $("#input_text");
-	$output_text = $("#output_text");
 
 	$converter.ajaxForm({
 		beforeSubmit: function(arr, $form, options) {
@@ -56,11 +58,13 @@ $(document).ready(function() {
 	
 	$("#left_controls a").click(function() {
 		$input_select.val($(this).attr("title"));
+		invalidateParsing();
 		see();
 		return false;
 	});
 	$("#right_controls a").click(function() {
 		$output_select.val($(this).attr("title"));
+		invalidateParsing();
 		see();
 		return false;
 	});
@@ -69,6 +73,7 @@ $(document).ready(function() {
 		$.ajax({
 			url: url,
 			success: function(data) {
+				invalidateParsing();
 				$input_text.val(data);
 			}
 		})
@@ -102,15 +107,17 @@ function intro() {
 	intro_played = true;
 	var intro = "h1. Welcome to SeeSaw\n\nSee...";
 	animateText(intro, $input_text, 50, function() {
-		$("#right textarea").focus();
+		invalidateParsing();
+		$output_text.focus();
 		var timeout = setTimeout(function() {
-			$("#left textarea").focus();
+			$input_text.focus();
 			clearTimeout(timeout);
 			timeout = setTimeout(function() {
 				clearTimeout(timeout);
 				intro = "Saw.\n\n\"Text Converting\":http://en.wikipedia.org/wiki/Parsing";
 				animateText(intro, $input_text, 50, function() {
-					$("#right textarea").focus();
+					invalidateParsing();
+					$output_text.focus();
 				});
 			}, 1000);
 		}, 1500);
@@ -136,22 +143,33 @@ function animateText(string, receiver, interval, callback) {
 function see() {
 	$seesaw.see(5);
 	$leftbox.stop().animate({top:$low});
-	$output_text.stop().animate({opacity:0}, 500);
+	if ($ready_to_render) {
+		$output_text.stop().animate({opacity:0}, 500);
+	}
 	$rightbox.stop().animate({top:$high}, 500, function() { convert(); });
 }
 
 function saw() {
 	$seesaw.saw(5);
 	$leftbox.stop().animate({top:$high});
-	$output_text.stop().animate({opacity:1}, 500);
+	if ($ready_to_render) {
+		$output_text.stop().animate({opacity:1}, 500);
+	}
 	$rightbox.stop().animate({top:$low}, 500, function() { convert(); });
 }
 
 function convert() {
-	$input.val($input_text.val());
-	$converter.submit();
+	if ($ready_to_render) {
+		$ready_to_render = false;
+		$input.val($input_text.val());
+		$converter.submit();
+	}
 }
 
 function chordlength(r, angle) {
 	return r + r * Math.sin(angle);
+}
+
+function invalidateParsing() {
+	$ready_to_render = true;
 }
