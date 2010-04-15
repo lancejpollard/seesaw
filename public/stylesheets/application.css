@@ -7,7 +7,6 @@ html, body {
 	width:100%;
 	height:100%;
 	background-color: #222222;
-	overflow:auto;
 	font-size: 20px;
 }
 #main_container {
@@ -16,6 +15,7 @@ html, body {
 	height:100%;
 	width:100%;
 	overflow:hidden;
+	min-height:630px;
 	border:10px solid #101010;
 }
 
@@ -148,9 +148,24 @@ textarea {
 	margin-left:-50px;
 	padding:10px;
 	font-size: 10px;
-	overflow:hidden;
+	width:70px;
 }
-#footer a {
+#footer a.name {
 	position:relative;
-	left:10px;
+	left:5px;
+	clear:both;
+}
+#footer ul {
+	position:relative;
+	left:5px;
+	margin:auto;
+}
+#footer .control {
+	float:left;
+	margin: 5px;
+}
+#footer .control a {
+	position:relative;
+	left:5px;
+	top:5px;
 }

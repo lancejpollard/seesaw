@@ -64,6 +64,16 @@ $(document).ready(function() {
 		see();
 		return false;
 	});
+	$("a.lesson").click(function() {
+		url = "/lessons/" + $(this).attr("title");
+		$.ajax({
+			url: url,
+			success: function(data) {
+				$input_text.val(data);
+			}
+		})
+		return false;
+	})
 	
 	$("#seesaw_post").click(function() {
 		$seesaw.saw(0);

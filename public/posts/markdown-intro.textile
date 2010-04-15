@@ -1,0 +1,17 @@
+# Headers are by number of pound signs
+## Second level Header
+### Third, etc.
+
+* Unordered list
+* next item
+
+Unordered lists can also be with "+" or "-".
+
+1. Ordered list's are numbered
+2. second item...
+
+[This is a link](http://www.google.com/)
+[This is a link](http://www.google.com/ "with Alternate Text!")
+
+![This is alt text for an image](/path/to/image.png)
+![This image...](/path/to/image.jpg "Has a title!"

@@ -21,6 +21,16 @@ get "/" do
   haml :index
 end
 
+get "/lessons/:lesson" do
+  if params["lesson"] == "textile"
+    IO.read("public/posts/textile-intro.textile")
+  elsif params["lesson"] == "markdown"
+    IO.read("public/posts/markdown-intro.textile")
+  else
+    ""
+  end
+end
+
 post "/see" do
   if input = params["input"]
     output_format = params["output_format"]
