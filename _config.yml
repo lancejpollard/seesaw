@@ -1,0 +1,57 @@
+
+# main config
+auto: false
+server: false
+lsi: false
+exclude: shared
+permalink: pretty
+source: _source
+posts_include:
+  - .textile
+  - .markdown
+api: true
+url: 'http://localhost:4567'
+language: en-US
+
+remote_app:
+  url: http://localhost:4568
+  path: /test
+
+keys:
+  google_analytics: "UA-15601175-2"
+info:
+  address:
+    city: Berkeley
+    state: CA
+    zip: 94704
+  email: "lancejpollard@gmail.com"
+metadata:
+  domain: ilove4d.com
+  title: SeeSaw
+  tagline: "Format Tester - Convert Back and Forth Between all the Common Formats"
+  description: "Format Tester - Convert Back and Forth Between all the Common Formats"
+  author: "Lance Pollard"
+  copyright: "4D | All Rights Reserved"
+  country: "United States"
+  classification: Techonology and Innovation
+  keywords: "AI, AIR, Algorithm, Animation, AS3, Autonomous, Bioinformatics, Biology, Code, Complexity, Emergence, Events, Experiments,Flash, Flash Player 10, Flex, Git, Github, Interactive, Interface, Open Source"
+authors:
+  -
+    name: Lance Pollard
+    age: 23
+    city: Berkeley
+    state: CA
+    zip: 94704
+    country: United States
+    company: 4D Design Lab
+    website: http://github.com/viatropos
+links:
+  twitter: http://www.twitter.com/viatropos
+  facebook: "http://www.facebook.com/viatropos"
+  github: http://www.github.com/viatropos
+  stack_overflow: ""
+  digg: ""
+  myspace: ""
+  linked_in: ""
+  website: "http://www.ilove4d.com"
+  google_apps: "http://www.google.com/a/ilove4d.com"

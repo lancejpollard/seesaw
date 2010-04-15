@@ -1,0 +1,45 @@
+#main_container
+	%form#converter.invisible{:action => "/see", :method => :post}
+		%textarea{:name => :input}
+		%select#input_format{:name => "input_format"}
+			%option{:value => "html"}
+			%option{:value => "textile"}
+			%option{:value => "haml"}
+			%option{:value => "markdown"}
+		%select#output_format{:name => "output_format"}
+			%option{:value => "html"}
+			%option{:value => "textile"}
+			%option{:value => "haml"}
+			%option{:value => "markdown"}
+			%option{:value => "actual"}
+		%input{:type => :submit, :name => "seesaw", :class => :button}
+	#header
+	#seesaw.post.hentry
+	#seesaw_post
+	#weights
+		#left.weight
+			#left_controls.controls
+				%ul
+					%li.control
+						%a{:href => "", :title => "html"} Ht
+					%li.control
+						%a{:href => ""} Tx
+					%li.control
+						%a{:href => ""} Ha
+					%li.control
+						%a{:href => ""} Md
+			.text_container
+				%textarea.text#input_text
+		#right.weight
+			.text_container
+				%textarea.text#output_text
+			#right_controls.controls
+				%ul
+					%li.control
+						%a{:href => ""} Ht
+					%li.control
+						%a{:href => ""} Tx
+					%li.control
+						%a{:href => ""} Ha
+					%li.control
+						%a{:href => ""} Md

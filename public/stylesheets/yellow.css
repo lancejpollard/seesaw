@@ -1,0 +1,146 @@
+small {
+font-size:11px;
+color:#dabd1c;
+}
+small.featured {
+font-size:11px;
+color:#fff;
+padding:0 5px 0 5px;
+margin:0 0 0 4px;
+background-color:#dabd1c;
+}
+a{
+text-decoration:none;
+color:#dabd1c;
+}
+a.read_more:hover{
+color:#dabd1c;
+}
+/*----------------------headers-p-a-style------------------------------*/
+h1{
+padding:10px 0 10px 0;
+margin:0;
+clear:both;
+font-size:20px;
+color:#FFFFFF;
+font-weight:normal;
+}
+h2.pagetitle {
+font-size:17px;
+color:#FFFFFF;
+background-color:#dabd1c;
+padding:2px 6px 2px 6px;
+position:absolute;
+top:-7px;
+font-weight:normal;
+left:16px;
+float:left;
+z-index:9999;
+}
+
+h3 {
+padding:10px 0 10px 0;
+margin:0;
+clear:both;
+font-size:18px;
+color:#FFFFFF;
+font-weight:normal;
+}
+
+
+/*--------------------------featured slider content------------------------*/
+.featured_title{
+font-size:17px;
+color:#FFFFFF;
+background-color:#dabd1c;
+padding:2px 6px 2px 6px;
+position:absolute;
+top:12px;
+left:20px;
+float:left;
+z-index:9999;
+}
+
+.pagination a{
+width:23px;
+height:21px;
+background:url(../images/pag_bg.jpg) no-repeat center;
+display:block;
+float:left;
+text-align:center;
+line-height:21px;
+padding:0px;
+margin:0 3px 0 0;
+text-decoration: none; 
+color:#000;
+}
+.comments a:hover{
+color:#dabd1c;
+}
+/*-------------------------home_content------------------------------------*/
+.about_block{
+width:272px; float:left;
+background:url(../images/about_block_bg.jpg) no-repeat center top;
+}
+.services_block{
+width:272px; float:left; margin:0 0 0 60px;
+background:url(../images/services_block_bg.jpg) no-repeat center top;
+}
+.contact_block{
+width:272px; float:right;
+background:url(../images/contact_block_bg.jpg) no-repeat center top;
+}
+.block_content h2{
+color:#dabd1c;
+font-size:17px;
+margin:0px;
+padding:40px 0 20px 0;
+font-weight:normal;
+}
+
+.post h2 a:hover, .page_post h2 a:hover{
+color:#dabd1c;
+}
+
+#sidebar h2{
+font-size:17px;
+color:#FFFFFF;
+background-color:#dabd1c;
+padding:2px 6px 2px 6px;
+margin:0px;
+font-weight:normal;
+float:left;
+position:absolute;
+top:-10px;
+left:20px;
+z-index:999;
+}
+#sidebar ul ul li a:hover, #sidebar ul ul li.current-cat a, #sidebar ul ul li.current_page_item a{
+color:#dabd1c;
+background:url(../images/bullet_a.gif) no-repeat left;
+}
+
+
+#footer h2{
+color:#dabd1c;
+font-size:17px;
+margin:0px;
+padding:20px 0 0px 0;
+font-weight:normal;
+}
+#footer ul li a:hover{
+color:#dabd1c;
+}
+#footer .recent_comments ul li a{
+color:#dabd1c;
+}
+.navigation a:hover{
+color:#dabd1c;
+}
+.footer_logo{
+float:left;
+padding:0px 0 0 0;
+color:#dabd1c;
+font-size:17px;
+}
+
