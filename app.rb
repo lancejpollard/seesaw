@@ -4,10 +4,10 @@ require 'rubygems'
 require 'haml'
 require "RedCloth"
 begin
-  require "BlueCloth"
-  require "ClothRed"
+  require "bluecloth"
+  require "clothred"
 rescue Exception => e
-  puts "Heroku can't load bluecloth properly"
+  puts "Heroku can't load get #{e.to_s}"
 end
 require 'haml/exec'
 require 'haml/html'

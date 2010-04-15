@@ -1,6 +1,8 @@
 RedCloth
-BlueCloth
-ClothRed
+sinatra_more
+BlueCloth --version '>= 1.0.1'
+ClothRed --version '>= 0.4.1'
 sinatra
+sinatra_more
 haml
 broadway
