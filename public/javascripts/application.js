@@ -108,7 +108,7 @@ function intro() {
 			clearTimeout(timeout);
 			timeout = setTimeout(function() {
 				clearTimeout(timeout);
-				intro = "Saw.\n\n\"Fork Me\":http://github.com/viatropos";
+				intro = "Saw.\n\n\"Text Converting\":http://en.wikipedia.org/wiki/Parsing";
 				animateText(intro, $input_text, 50, function() {
 					$("#right textarea").focus();
 				});
