@@ -11,20 +11,35 @@ $(document).ready(function() {
 	$low = - $high + offset;
 	$ready_to_render = false;
 	
+	// tab order
+	$(".controls a").each(function(index, element) {
+		$(element).attr("tabindex", 0);
+	})
+	
 	$converter = $("#converter");
 	$input = $("#converter textarea");
 	$input_select = $("#input_format");
 	$output_select = $("#output_format");
 	$input_text = $("#input_text");
 	$output_text = $("#output_text");
+	$focused = null;
 	
-	$seesaw.toggle(function() { see(); }, function() { saw(); });
+	$seesaw.toggle(function() { $output_text.focus(); }, function() { $input_text.focus(); });
 	
 	// validate on focus
-	$output_text.focus(function() { see(); });
-	$input_text.focus(function() { saw(); });
+	$output_text.focus(function() { $focused = $output_text; see(); });
+	$input_text.focus(function() { $focused = $input_text; saw(); });
 	
 	$(document).keydown(function (event) {
+		// if tab, toggle textinput
+		if (event.keyCode == 9) {
+			if ($focused == $input_text) {
+				$output_text.focus();
+			} else {
+				$input_text.focus();
+			}
+			return false;
+		}
 		if ($(event.target).hasClass("text")) {
 			invalidateParsing();
 			return;
@@ -73,8 +88,10 @@ $(document).ready(function() {
 		$.ajax({
 			url: url,
 			success: function(data) {
-				invalidateParsing();
-				$input_text.val(data);
+				$input_text.focus();
+				$input_text.stop().animate({opacity:0}, 300, function() {
+					$input_text.val(data);
+				}).animate({opacity:1}, 500, function() { invalidateParsing(); });
 			}
 		})
 		return false;
@@ -106,6 +123,7 @@ function intro() {
 	
 	intro_played = true;
 	var intro = "h1. Welcome to SeeSaw\n\nSee...";
+	$input_text.focus();
 	animateText(intro, $input_text, 50, function() {
 		invalidateParsing();
 		$output_text.focus();
