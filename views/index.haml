@@ -1,6 +1,7 @@
 #main_container
 	#header
 		%h1= c("metadata.title")
+		%h2= c("metadata.description")
 	%form#converter.invisible{:action => "/see", :method => :post}
 		%textarea{:name => :input}
 		%select#input_format{:name => "input_format"}

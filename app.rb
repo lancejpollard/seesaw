@@ -1,13 +1,13 @@
 # http://neothemes.com/rofolio-demo/?cat=7
 # http://blacksteel.x10hosting.com/contact.html
 require 'rubygems'
-require 'sinatra'
 require 'haml'
 require "RedCloth"
 require "BlueCloth"
 require "ClothRed"
 require 'haml/exec'
 require 'haml/html'
+require 'sinatra'
 require 'broadway'
 
 set :public, "public"
