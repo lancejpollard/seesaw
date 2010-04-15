@@ -52,18 +52,25 @@ h3 {
 
 /* main */
 #main_container {
-	position:relative;
-	float:left;
+	position:absolute;
 	height:100%;
 	width:100%;
-	overflow:hidden;
 	min-height:630px;
-	border:10px solid #101010;
 }
 
-div {
+#main_container div {
   -moz-border-radius: 14px;
   -webkit-border-radius: 14px;
+}
+#background {
+	position:fixed;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	border:10px solid #101010;
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
 }
 
 #seesaw {
@@ -213,7 +220,6 @@ textarea {
 	background:#101010;
 	padding:10px;
 }
-
 #ie_warning {
 	position:fixed;
 	margin-left:25%;
