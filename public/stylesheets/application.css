@@ -55,7 +55,7 @@ h3 {
 	position:absolute;
 	height:100%;
 	width:100%;
-	min-height:630px;
+	min-height:680px;
 }
 
 div {
@@ -63,7 +63,7 @@ div {
   -webkit-border-radius: 14px;
 }
 #background {
-	min-height:630px;
+	min-height:680px;
 	position:fixed;
 	top:0px;
 	bottom:0px;
