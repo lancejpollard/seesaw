@@ -63,6 +63,7 @@ div {
   -webkit-border-radius: 14px;
 }
 #background {
+	min-height:630px;
 	position:fixed;
 	top:0px;
 	bottom:0px;

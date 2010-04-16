@@ -4,6 +4,8 @@
 		%h1.tooltip{:title => "SeeSaw?"}
 			%a= c("metadata.title")
 		%h2= c("metadata.description")
+		#snapshot
+			%img{:src => "/images/snapshot.jpg"}
 	%form#converter.invisible{:action => "/see", :method => :post}
 		%textarea{:name => :input}
 		%select#input_format{:name => "input_format"}
