@@ -1,8 +1,6 @@
 $(document).ready(function() {
-	// tooltips
-	$(".tooltip").easyTooltip();
-	$("#snapshot").css("display", "none");
-	$(".close").click(function() { $("#ie_warning").hide(300); return false; })
+	
+	$links = $("#links");
 	$seesaw = $('#seesaw');
 	$leftbox = $("#left");
 	$rightbox = $("#right");
@@ -14,6 +12,20 @@ $(document).ready(function() {
 	$high = $chord + offset;
 	$low = - $high + offset;
 	$ready_to_render = false;
+	
+	// tooltips
+	$(".tooltip").easyTooltip();
+	$("#snapshot").css("display", "none");
+	$(".close").click(function() { $("#ie_warning").hide(300); return false; })
+	
+	// links
+	$("#tab").toggle(function() {
+		$links.slideDown(function() {
+			
+		});
+	}, function() {
+		$links.slideUp();
+	})
 	
 	// tab order
 	$(".controls a").each(function(index, element) {
