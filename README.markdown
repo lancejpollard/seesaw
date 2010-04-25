@@ -17,7 +17,7 @@ SeeSaw was built to make it easier to learn from other people's code, to convert
 
 You can use it programmatically by making `POST` requests (below), or by using it at [http://meetseesaw.com](http://meetseesaw.com).
 
-The online version has all kinds of nifty keyboard inputs to make it really quick to see how your changes look.  It's annoying to have to press "Submit" and reload a new page every time you convert.  This way you can press 'left' and 'right', or 'tab' and everything changes in real-time.
+The online version takes advantage of keyboard shortcuts to render text transformation with minimal effort.  It's annoying to have to press "Submit" and reload a new page every time you convert.  This way you can press 'left' and 'right', or 'tab' and everything changes in real-time.
 
 ## Is there an API?
 
