@@ -1,86 +1,86 @@
 #main_container
-	= partial "partials/menu", :locals => locals
-	#background
-	#header
-		%h1{:title => "SeeSaw?"}
-			%a= c("metadata.title")
-		%h2= c("metadata.tagline")
-	%form#converter.invisible{:action => "/see", :method => :post}
-		%textarea{:name => :input}
-		%select#input_format{:name => "input_format"}
-			%option{:value => "html"}
-			%option{:value => "textile", :selected => "selected"}
-			%option{:value => "haml"}
-			%option{:value => "markdown"}
-			%option{:value => "sass"}
-			%option{:value => "tlf"}
-			%option{:value => "css"}
-			%option{:value => "js"}
-		%select#output_format{:name => "output_format"}
-			%option{:value => "html", :selected => "selected"}
-			%option{:value => "textile"}
-			%option{:value => "haml"}
-			%option{:value => "markdown"}
-			%option{:value => "css"}
-			%option{:value => "minified"}
-			%option{:value => "beautified"}
-		%input{:type => :submit, :name => "seesaw", :class => :button}
-	#seesaw
-	#seesaw_post
-	#weights
-		#left.weight
-			#left_controls.controls
-				%ul
-					%li.control
-						%a.tooltip{:href => "", :title => "Html", :rel => "html"} Ht
-					%li.control
-						%a.tooltip{:href => "", :title => "Textile", :rel => "textile"} Tx
-					%li.control
-						%a.tooltip{:href => "", :title => "Haml", :rel => "haml"} Ha
-					%li.control
-						%a.tooltip{:href => "", :title => "Markdown", :rel => "markdown"} Md
-					%li.control
-						%a.tooltip{:href => "", :title => "Javascript", :rel => "js"} Js
-					%li.control
-						%a.tooltip{:href => "", :title => "CSS", :rel => "css"} Cs
-					-#
-  					%li.control
-  						%a.tooltip{:href => "", :title => "Sass", :rel => "sass"} Ss
-  					%li.control
-  						%a.tooltip{:href => "", :title => "Text Layout Framework", :rel => "tlf"} Tf
-			.text_container
-				%textarea.text#input_text
-		#right.weight
-			.text_container
-				%textarea.text#output_text{:readonly => "readonly"}
-			#right_controls.controls
-				%ul
-					%li.control
-						%a{:href => "", :title => "Html", :rel => "html"} Ht
-					%li.control
-						%a{:href => "", :title => "Textile", :rel => "textile"} Tx
-					%li.control
-						%a{:href => "", :title => "Haml", :rel => "haml"} Ha
-					%li.control
-						%a{:href => "", :title => "Markdown", :rel => "markdown"} Md
-					%li.control
-						%a{:href => "", :title => "CSS", :rel => "css"} Cs
-					%li.control
-						%a{:href => "", :title => "Sass", :rel => "sass"} Ss
-					%li.control
-						%a{:href => "", :title => "Text Layout Framework", :rel => "tlf"} Tf
-					%li.control
-						%a{:href => "", :title => "Minified", :rel => "minified"} -
-					%li.control
-						%a{:href => "", :title => "Beautified", :rel => "beautified"} +
-	#footer
-		%ul
-			%li.control
-				%a.tooltip.lesson{:href => "", :title => "Textile Example", :rel => "textile"} Tx
-			%li.control
-				%a.tooltip.lesson{:href => "", :title => "Markdown Example", :rel => "markdown"} Md
-		%a.name{:href => c("links.website")} Viatropos @ 4D
-	/[if IE]
-		#ie_warning
-			:textile
-				#{c("snippets.ie_warning")}
+  = partial "partials/menu", :locals => locals
+  #background
+  #header
+    %h1{:title => "SeeSaw?"}
+      %a= c("metadata.title")
+    %h2= c("metadata.tagline")
+  %form#converter.invisible{:action => "/see", :method => :post}
+    %textarea{:name => :input}
+    %select#input_format{:name => "input_format"}
+      %option{:value => "html"}
+      %option{:value => "textile", :selected => "selected"}
+      %option{:value => "haml"}
+      %option{:value => "markdown"}
+      %option{:value => "sass"}
+      %option{:value => "tlf"}
+      %option{:value => "css"}
+      %option{:value => "js"}
+    %select#output_format{:name => "output_format"}
+      %option{:value => "html", :selected => "selected"}
+      %option{:value => "textile"}
+      %option{:value => "haml"}
+      %option{:value => "markdown"}
+      %option{:value => "css"}
+      %option{:value => "minified"}
+      %option{:value => "beautified"}
+    %input{:type => :submit, :name => "seesaw", :class => :button}
+  #seesaw
+  #seesaw_post
+  #weights
+    #left.weight
+      #left_controls.controls
+        %ul
+          %li.control
+            %a.tooltip{:href => "", :title => "Html", :rel => "html"} Ht
+          %li.control
+            %a.tooltip{:href => "", :title => "Textile", :rel => "textile"} Tx
+          %li.control
+            %a.tooltip{:href => "", :title => "Haml", :rel => "haml"} Ha
+          %li.control
+            %a.tooltip{:href => "", :title => "Markdown", :rel => "markdown"} Md
+          %li.control
+            %a.tooltip{:href => "", :title => "Javascript", :rel => "js"} Js
+          %li.control
+            %a.tooltip{:href => "", :title => "CSS", :rel => "css"} Cs
+          -#
+            %li.control
+              %a.tooltip{:href => "", :title => "Sass", :rel => "sass"} Ss
+            %li.control
+              %a.tooltip{:href => "", :title => "Text Layout Framework", :rel => "tlf"} Tf
+      .text_container
+        %textarea.text#input_text
+    #right.weight
+      .text_container
+        %textarea.text#output_text{:readonly => "readonly"}
+      #right_controls.controls
+        %ul
+          %li.control
+            %a{:href => "", :title => "Html", :rel => "html"} Ht
+          %li.control
+            %a{:href => "", :title => "Textile", :rel => "textile"} Tx
+          %li.control
+            %a{:href => "", :title => "Haml", :rel => "haml"} Ha
+          %li.control
+            %a{:href => "", :title => "Markdown", :rel => "markdown"} Md
+          %li.control
+            %a{:href => "", :title => "CSS", :rel => "css"} Cs
+          %li.control
+            %a{:href => "", :title => "Sass", :rel => "sass"} Ss
+          %li.control
+            %a{:href => "", :title => "Text Layout Framework", :rel => "tlf"} Tf
+          %li.control
+            %a{:href => "", :title => "Minified", :rel => "minified"} -
+          %li.control
+            %a{:href => "", :title => "Beautified", :rel => "beautified"} +
+  #footer
+    %ul
+      %li.control
+        %a.tooltip.lesson{:href => "", :title => "Textile Example", :rel => "textile"} Tx
+      %li.control
+        %a.tooltip.lesson{:href => "", :title => "Markdown Example", :rel => "markdown"} Md
+    %a.name{:href => c("links.website")} Viatropos @ 4D
+  /[if IE]
+    #ie_warning
+      :textile
+        #{c("snippets.ie_warning")}

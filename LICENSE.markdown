@@ -1,0 +1,1 @@
+[GNU General Public License](http://www.opensource.org/licenses/gpl-2.0.php)
