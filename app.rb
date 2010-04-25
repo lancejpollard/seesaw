@@ -18,7 +18,7 @@ require "rest_client"
 set :public, "public"
 set :views, "views"
 
-APPLICATION_DOMAIN = "http://meetseesaw.com"
+APPLICATION_DOMAIN = "meetseesaw.com"
 
 configure :production do
   before do
