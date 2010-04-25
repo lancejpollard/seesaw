@@ -20,7 +20,7 @@ set :views, "views"
 
 APPLICATION_DOMAIN = "http://meetseesaw.com"
 
-configure :development do
+configure :production do
   before do
     if request.env['HTTP_HOST'] != APPLICATION_DOMAIN
       redirect APPLICATION_DOMAIN
