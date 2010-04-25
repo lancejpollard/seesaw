@@ -24,6 +24,8 @@ $(document).ready(function() {
 	$high = $chord + offset;
 	$low = - $high + offset;
 	$ready_to_render = false;
+	$window = $(window);
+	$is_full_screen = false;
 		
 	$converter = $("#converter");
 	$input = $("#converter textarea");
@@ -31,13 +33,13 @@ $(document).ready(function() {
 	$output_select = $("#output_format");
 	$input_text = $("#input_text");
 	$output_text = $("#output_text");
+	$full_screen = $("#full_screen");
 	$focused = null;
 	$left_controls = $("#left_controls a");
 	$right_controls = $("#right_controls a");
 	
 	// tooltips
 	$(".tooltip").easyTooltip();
-	$("#snapshot").css("display", "none");
 	$(".close").click(function() { $("#ie_warning").hide(300); return false; })
 	
 	// links
@@ -58,6 +60,44 @@ $(document).ready(function() {
 	
 	// validate on focus
 	$output_text.focus(function() { $focused = $output_text; see(); });
+	$("#header a").click(function() {
+		output = $output_text.val();
+		if ($is_full_screen || output == "") {
+			return false;
+		}
+		$is_full_screen = true;
+		$("textarea", $full_screen).val(output);
+		$full_screen.css("display", "inline-block");
+		$full_screen.width(0);
+		$full_screen.height(0);
+		$full_screen.stop().animate({
+			opacity:1,
+			left:"5%",
+			right:"5%",
+			top:130,
+			width:"88%",
+			height:"70%"
+		});
+		var full_screen_handler = function(event) {
+			if ($(event.target).is("textarea")) {
+				return;
+			}
+			$is_full_screen = false;
+			$window.unbind("click", full_screen_handler);
+			$full_screen.stop().animate({
+				opacity:0,
+				left:"30%",
+				right:"30%",
+				top:130,
+				width:"10%",
+				height:"10%"
+			}, function() {
+				$full_screen.css("display", "none");
+			});
+		}
+		$window.bind("click", full_screen_handler);
+		return false;
+	})
 	$input_text.focus(function() { $focused = $input_text; saw(); });
 	
 	$(document).keydown(function (event) {

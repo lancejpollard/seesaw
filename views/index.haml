@@ -3,7 +3,7 @@
   #background
   #header
     %h1{:title => "SeeSaw?"}
-      %a= c("metadata.title")
+      %a{:href => "/"}= c("metadata.title")
     %h2= c("metadata.tagline")
   %form#converter.invisible{:action => "/see", :method => :post}
     %textarea{:name => :input}
@@ -27,6 +27,7 @@
     %input{:type => :submit, :name => "seesaw", :class => :button}
   #seesaw
   #seesaw_post
+  
   #weights
     #left.weight
       #left_controls.controls
@@ -84,3 +85,5 @@
     #ie_warning
       :textile
         #{c("snippets.ie_warning")}
+.text_container.invisible#full_screen
+  %textarea.text
