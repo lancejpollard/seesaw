@@ -18,12 +18,13 @@
 
 / javascripts
 / %script{ :type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" }
-%script{ :type => "text/javascript", :src => "/javascripts/jquery.js" }
-%script{ :type => "text/javascript", :src => "/javascripts/jquery.easytooltip.js" }
+- %w(jquery-1.4.2 jquery.easyToolTip-1.0 jquery.form-2.4.3).each do |javascript|
+  %script{ :type => "text/javascript", :src => "http://cachedcommons.org/javascripts/jquery/#{javascript}-min.js" }
 %script{ :type => "text/javascript", :src => "/javascripts/jquery.transform.js" }
 %script{ :type => "text/javascript", :src => "/javascripts/jquery.animate-transform.js" }
 %script{ :type => "text/javascript", :src => "/javascripts/jquery.seesaw.js" }
-%script{ :type => "text/javascript", :src => "/javascripts/jquery.form.js" }
+%script{ :type => "text/javascript", :src => "/javascripts/css-beautify.js" }
+%script{ :type => "text/javascript", :src => "/javascripts/js-beautify.js" }
 %script{ :type => "text/javascript", :src => "/javascripts/application.js" }
 = yield_content :javascript_head
 

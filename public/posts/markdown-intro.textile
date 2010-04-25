@@ -1,4 +1,4 @@
-# Headers are by number of pound signs
+# Headers are by number or pound signs
 ## Second level Header
 ### Third, etc.
 
@@ -14,4 +14,7 @@ Unordered lists can also be with "+" or "-".
 [This is a link](http://www.google.com/ "with Alternate Text!")
 
 ![This is alt text for an image](/path/to/image.png)
-![This image...](/path/to/image.jpg "Has a title!"
+![This image...](/path/to/image.jpg "Has a title!")
+
+**bold**
+*italic*

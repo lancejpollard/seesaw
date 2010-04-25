@@ -13,9 +13,20 @@ require 'haml/exec'
 require 'haml/html'
 require 'sinatra'
 require 'broadway'
+require "rest_client"
 
 set :public, "public"
 set :views, "views"
+
+APPLICATION_DOMAIN = "http://meetseesaw.com/"
+
+configure :production do
+  before do
+    if request.env['HTTP_HOST'] != APPLICATION_DOMAIN
+      redirect APPLICATION_DOMAIN
+    end
+  end
+end
 
 get "/" do
   haml :index
@@ -29,6 +40,29 @@ get "/lessons/:lesson" do
   else
     ""
   end
+end
+
+def minify(input, type)
+  options = {
+    :compresstext => input,
+    :type => type.upcase
+  }
+  response = RestClient.post "http://refresh-sf.com/yui/", options
+  html = Nokogiri::HTML(response.to_s)
+  minified = html.xpath("//textarea[@class='output']").first.text
+  stats = html.xpath("//dl[@class='stats']").first
+  stats_hash = {}
+  keys = stats.xpath("dt")
+  values = stats.xpath("dd")
+  keys.each_with_index do |child, index|
+    stats_hash[child.text] = values[index].text
+  end
+  minified
+end
+
+# there are no beautifiers for ruby! using javascript for now
+def beautify(input, type)
+  input
 end
 
 post "/see" do
@@ -82,6 +116,20 @@ post "/see" do
         input # no markdown!
       when "haml"
         input
+      end
+    when "css"
+      case output_format
+      when "minified"
+        minify(input, "css")
+      when "beautified"
+        beautify(input, "css")
+      end
+    when "js"
+      case output_format
+      when "minified"
+        minify(input, "js")
+      when "beautified"
+        beautify(input, "js")
       end
     end
   else

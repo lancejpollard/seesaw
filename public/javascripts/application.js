@@ -1,5 +1,17 @@
 $(document).ready(function() {
 	
+	$conversion_map = {
+		"textile": 	["html", "haml"],
+		"markdown": ["html", "haml", "textile"],
+		"html": 		["haml", "textile", "markdown", "beautified"],
+		"haml": 		["html", "textile"],
+		"xml": 			["beautified"],
+		"js": 			["minified", "beautified"],
+		"css": 			["minified", "beautified", "sass"],
+		"sass": 		["css"],
+		"tlf": 			["html", "textile", "haml", "beautified"]
+	}
+	
 	$links = $("#links");
 	$seesaw = $('#seesaw');
 	$leftbox = $("#left");
@@ -12,6 +24,16 @@ $(document).ready(function() {
 	$high = $chord + offset;
 	$low = - $high + offset;
 	$ready_to_render = false;
+		
+	$converter = $("#converter");
+	$input = $("#converter textarea");
+	$input_select = $("#input_format");
+	$output_select = $("#output_format");
+	$input_text = $("#input_text");
+	$output_text = $("#output_text");
+	$focused = null;
+	$left_controls = $("#left_controls a");
+	$right_controls = $("#right_controls a");
 	
 	// tooltips
 	$(".tooltip").easyTooltip();
@@ -27,18 +49,10 @@ $(document).ready(function() {
 		$links.slideUp();
 	})
 	
-	// tab order
+	// not part of tab order
 	$(".controls a").each(function(index, element) {
 		$(element).attr("tabindex", 0);
 	})
-	
-	$converter = $("#converter");
-	$input = $("#converter textarea");
-	$input_select = $("#input_format");
-	$output_select = $("#output_format");
-	$input_text = $("#input_text");
-	$output_text = $("#output_text");
-	$focused = null;
 	
 	$seesaw.toggle(function() { $output_text.focus(); }, function() { $input_text.focus(); });
 	
@@ -79,26 +93,36 @@ $(document).ready(function() {
 			
 		},
 		success: function(responseText, statusText, xhr, $form) {
-			$output_text.val(responseText.toString());
-			$output_text.animate({opacity:1}, 300);
+			render_output(responseText.toString());
 		},
 		error: function(responseText, statusText, xhr, $form) {
 			
 		}
 	});
 	
-	$("#left_controls a").click(function() {
-		$input_select.val($(this).attr("rel"));
+	$left_controls.click(function() {
+		var input_type = $(this).attr("rel");
+		var output_types = $conversion_map[input_type];
+		$input_select.val(input_type);
+		$right_controls.each(function(index, element) {
+			var $right_control = $(element);
+			if (output_types.indexOf($right_control.attr("rel")) == -1) {
+				$right_control.hide(500);
+			} else {
+				$right_control.show(500);
+			}
+		})
+		return false;
+	});
+	
+	$right_controls.click(function(event) {
+		var output_type = $(this).attr("rel");
+		$output_select.val(output_type);
 		invalidateParsing();
 		see();
 		return false;
 	});
-	$("#right_controls a").click(function() {
-		$output_select.val($(this).attr("rel"));
-		invalidateParsing();
-		see();
-		return false;
-	});
+	
 	$("a.lesson").click(function() {
 		url = "/lessons/" + $(this).attr("rel");
 		$.ajax({
@@ -132,10 +156,65 @@ $(document).ready(function() {
 	})
 });
 
+function see(callback) {
+	if (!callback)
+		callback = convert;
+	$seesaw.see(5);
+	$leftbox.stop().animate({top:$low});
+	if ($ready_to_render) {
+		$output_text.stop().animate({opacity:0}, 500);
+	}
+	$rightbox.stop().animate({top:$high}, 500, callback);
+}
+
+function saw() {
+	$seesaw.saw(5);
+	$leftbox.stop().animate({top:$high});
+	if ($ready_to_render) {
+		$output_text.stop().animate({opacity:1}, 500);
+	}
+	$rightbox.stop().animate({top:$low}, 500, function() { convert(); });
+}
+
+function convert() {
+	if ($ready_to_render) {
+		$ready_to_render = false;
+		$input.val($input_text.val());
+		input_type = $input_select.val();
+		output_type = $output_select.val();
+		if (output_type == "beautified") {
+			var output = $input_text.val();
+			if (input_type == "css") {
+				output = css_beautify(output);
+			} else if (input_type == "js") {
+				output = js_beautify(output);
+			}
+			render_output(output);
+		} else {
+			$converter.submit();
+		}
+	}
+}
+
+function chordlength(r, angle) {
+	return r + r * Math.sin(angle);
+}
+
+function invalidateParsing() {
+	$ready_to_render = true;
+}
+
+function render_output(output) {
+	$output_text.val(output);
+	$output_text.animate({opacity:1}, 300);
+}
+
+/* INTRO */
+
 var intro_played = false;
 function intro() {
+	return; // not yet
 	if (intro_played)
-		return;
 	
 	intro_played = true;
 	var intro = "h1. Welcome to SeeSaw\n\nSee...";
@@ -172,38 +251,4 @@ function animateText(string, receiver, interval, callback) {
 		}
 		receiver.val(built);
 	}, interval)
-}
-
-function see() {
-	$seesaw.see(5);
-	$leftbox.stop().animate({top:$low});
-	if ($ready_to_render) {
-		$output_text.stop().animate({opacity:0}, 500);
-	}
-	$rightbox.stop().animate({top:$high}, 500, function() { convert(); });
-}
-
-function saw() {
-	$seesaw.saw(5);
-	$leftbox.stop().animate({top:$high});
-	if ($ready_to_render) {
-		$output_text.stop().animate({opacity:1}, 500);
-	}
-	$rightbox.stop().animate({top:$low}, 500, function() { convert(); });
-}
-
-function convert() {
-	if ($ready_to_render) {
-		$ready_to_render = false;
-		$input.val($input_text.val());
-		$converter.submit();
-	}
-}
-
-function chordlength(r, angle) {
-	return r + r * Math.sin(angle);
-}
-
-function invalidateParsing() {
-	$ready_to_render = true;
 }

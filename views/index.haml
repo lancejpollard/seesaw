@@ -1,24 +1,10 @@
 #main_container
-	#top
-		#links
-			%ul
-				%li
-					%a{:href => "http://redcloth.org/textile/writing-paragraph-text/", :title => "Textile Examples", :rel => "textile", :target => "_blank"} Texile
-				%li
-					%a{:href => "http://haml-lang.com/docs/yardoc/file.HAML_REFERENCE.html", :title => "Haml Examples", :rel => "haml", :target => "_blank"} Haml
-				%li
-					%a{:href => "http://daringfireball.net/projects/markdown/syntax", :title => "Markdown Examples", :rel => "markdown", :target => "_blank"} Markdown
-				%li
-					%a{:href => "http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html", :title => "Sass Examples", :rel => "sass", :target => "_blank"} Sass
-		#tab
-			%p i
+	= partial "partials/menu", :locals => locals
 	#background
 	#header
-		%h1.tooltip{:title => "SeeSaw?"}
+		%h1{:title => "SeeSaw?"}
 			%a= c("metadata.title")
-		%h2= c("metadata.description")
-		#snapshot
-			%img{:src => "/images/snapshot.jpg"}
+		%h2= c("metadata.tagline")
 	%form#converter.invisible{:action => "/see", :method => :post}
 		%textarea{:name => :input}
 		%select#input_format{:name => "input_format"}
@@ -26,13 +12,18 @@
 			%option{:value => "textile", :selected => "selected"}
 			%option{:value => "haml"}
 			%option{:value => "markdown"}
+			%option{:value => "sass"}
+			%option{:value => "tlf"}
+			%option{:value => "css"}
+			%option{:value => "js"}
 		%select#output_format{:name => "output_format"}
 			%option{:value => "html", :selected => "selected"}
 			%option{:value => "textile"}
 			%option{:value => "haml"}
 			%option{:value => "markdown"}
-			%option{:value => "plain"}
-			%option{:value => "actual"}
+			%option{:value => "css"}
+			%option{:value => "minified"}
+			%option{:value => "beautified"}
 		%input{:type => :submit, :name => "seesaw", :class => :button}
 	#seesaw
 	#seesaw_post
@@ -48,11 +39,19 @@
 						%a.tooltip{:href => "", :title => "Haml", :rel => "haml"} Ha
 					%li.control
 						%a.tooltip{:href => "", :title => "Markdown", :rel => "markdown"} Md
+					%li.control
+						%a.tooltip{:href => "", :title => "Javascript", :rel => "js"} Js
+					%li.control
+						%a.tooltip{:href => "", :title => "CSS", :rel => "css"} Cs
+					%li.control
+						%a.tooltip{:href => "", :title => "Sass", :rel => "sass"} Ss
+					%li.control
+						%a.tooltip{:href => "", :title => "Text Layout Framework", :rel => "tlf"} Tf
 			.text_container
 				%textarea.text#input_text
 		#right.weight
 			.text_container
-				%textarea.text#output_text
+				%textarea.text#output_text{:readonly => "readonly"}
 			#right_controls.controls
 				%ul
 					%li.control
@@ -63,6 +62,16 @@
 						%a{:href => "", :title => "Haml", :rel => "haml"} Ha
 					%li.control
 						%a{:href => "", :title => "Markdown", :rel => "markdown"} Md
+					%li.control
+						%a{:href => "", :title => "CSS", :rel => "css"} Cs
+					%li.control
+						%a{:href => "", :title => "Sass", :rel => "sass"} Ss
+					%li.control
+						%a{:href => "", :title => "Text Layout Framework", :rel => "tlf"} Tf
+					%li.control
+						%a{:href => "", :title => "Minified", :rel => "minified"} -
+					%li.control
+						%a{:href => "", :title => "Beautified", :rel => "beautified"} +
 	#footer
 		%ul
 			%li.control

@@ -13,10 +13,6 @@ api: true
 url: 'http://localhost:4567'
 language: en-US
 
-remote_app:
-  url: http://localhost:4568
-  path: /test
-
 keys:
   google_analytics: "UA-15601175-7"
 info:
@@ -27,17 +23,7 @@ info:
   email: "lancejpollard@gmail.com"
   website: http://ilove4d.com
   company: 4D
-  
-metadata:
-  domain: ilove4d.com
-  title: SeeSaw
-  tagline: "Format Tester - Convert Back and Forth Between all the Common Formats"
-  description: "Converting Text Back and Forth"
-  author: "Lance Pollard"
-  copyright: "4D | All Rights Reserved"
-  country: "United States"
-  classification: Techonology and Innovation
-  keywords: "Parsing, Ruby, Sinatra, HAML, Textile, Mardown, HTML, JQuery, iLove4D"
+
 authors:
   -
     name: Lance Pollard
@@ -61,3 +47,18 @@ links:
 icons:
   favicon: /images/favicon.ico
   touch_icon: /images/touch-icon.jpg
+
+metadata:
+  domain: ilove4d.com
+  title: SeeSaw
+  tagline: "Text Beautifier, Minifier, and Convertifier"
+  description: "Text Beautifier, Minifier, and Convertifier"
+  author: "Lance Pollard"
+  copyright: "4D | All Rights Reserved"
+  country: "United States"
+  classification: Techonology and Innovation
+  keywords: "Pretty Printer, Code Beautifier, Javascript Beautifier, 
+    CSS Beautifier, CSS Minimizer, YUI Compressor, CSS Compressor, 
+    Javascript Compressor, Parsing, Text Conversion, Ruby, Sinatra, 
+    HAML, Textile, Mardown, HTML, JQuery, Text Layout Framework, Sass
+    Flash HTML, Flex HTML, iLove4D"
