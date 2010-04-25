@@ -18,9 +18,9 @@ require "rest_client"
 set :public, "public"
 set :views, "views"
 
-APPLICATION_DOMAIN = "http://meetseesaw.com/"
+APPLICATION_DOMAIN = "http://meetseesaw.com"
 
-configure :production do
+configure :development do
   before do
     if request.env['HTTP_HOST'] != APPLICATION_DOMAIN
       redirect APPLICATION_DOMAIN
