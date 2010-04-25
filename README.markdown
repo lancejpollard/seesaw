@@ -6,12 +6,12 @@ Text Beautifier, Minifier, and Converter
 
 SeeSaw was built to make it easier to learn from other people's code, to convert textile and markdown to html, and to convert html to haml.  Now it does much more:
 
-# HTML to Textile, Markdown, HAML
-# Textile to HTML, HAML
-# Markdown to Textile, HTML, HAML
-# HAML to HTML, Textile, and Markdown
-# Javascript Beautification and Minification
-# CSS Beautification and Minification
+* HTML to Textile, Markdown, HAML
+* Textile to HTML, HAML
+* Markdown to Textile, HTML, HAML
+* HAML to HTML, Textile, and Markdown
+* Javascript Beautification and Minification
+* CSS Beautification and Minification
 
 ## How do I use it?
 
@@ -46,6 +46,6 @@ Currently beautification is done through javascript as there weren't any availab
 
 TODO:
 
-# Add progress indicator
-# Flash's Text Layout Framework to HTML
-# XML and HTML pretty printer
+1. Add progress indicator
+2. Flash's Text Layout Framework to HTML
+3. XML and HTML pretty printer
